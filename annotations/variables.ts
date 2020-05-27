@@ -30,3 +30,31 @@ let point: { x: number; y: number } = {
 const logNumber: (i: number) => void = (i: number) => {
   console.log(i);
 };
+
+// when to use annotations
+
+// 1) Function that returns the 'any' type
+const json = '{"x": 10, "y": 20}';
+const coords: { x: number; y: number } = JSON.parse(json);
+console.log(coords); // {x: 10, y: 20};
+
+// 2) When a variable is declared on one line but initialized later
+let words = ['red', 'green', 'blue'];
+let foundWord: boolean; // add annotation, returns any without
+
+for (let i = 0; i < words.length; i++) {
+  if (words[i] === 'green') {
+    foundWord = true;
+  }
+}
+
+// 3) Variable type cannot be inferred correctly
+
+let nums = [-10, -1, 12];
+let numsAboveZero: boolean | number = false; // pipe character === or for annotations
+
+for (let i = 0; i < nums.length; i++) {
+  if (nums[i] > 0) {
+    numsAboveZero = nums[i];
+  }
+}
